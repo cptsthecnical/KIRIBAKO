@@ -56,13 +56,19 @@ export LS_COLORS="di=1;30:fi=0;37:ln=1;33:so=1;35:pi=1;33:bd=1;30:cd=1;30:or=1;3
 #     or — archivos rotos en rojo sangre oscuro (bold red)
 #     mi — archivos inexistentes en rojo sangre oscuro (bold red)
 #     ex — ejecutables en rojo brillante (bold red)
+
+# Editor por defecto
+export VISUAL=vim
+export EDITOR=vim
 ...
 -------------------------------------------------------------------------------------------
+
+# actualizo
+source ~/.bashrc
 
 # Configuro vimrc (técnica/grisácea)
 vim ~/.vimrc
 -------------------------------------------------------------------------------------------
-...
 set number                                    " Muestra números de línea
 set cursorline                                " Resalta línea actual
 set scrolloff=5                               " Mantiene 5 líneas arriba/abajo
@@ -90,7 +96,6 @@ highlight Comment ctermfg=3                   " Comentarios en amarillo
 set laststatus=2                              " Siempre mostrar línea de estado
 set noerrorbells                              " Sin sonidos de error
 set clipboard=unnamedplus                     " Usa portapapeles del sistema
-...
 -------------------------------------------------------------------------------------------
 
 # definir sistema de logs
@@ -199,7 +204,6 @@ source /etc/bash.bashrc
 cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.ori
 vim /etc/snmp/snmpd.conf
 -------------------------------------------------------------------------------------------
-...
 ## SNMPD Configuration | Optim5s (v5) - 07/2025
 ## puerto por defecto de escucha para SNMP
 agentAddress udp:161
@@ -254,7 +258,6 @@ access readonly "" any noauth exact systemonly none none
 
 # Permitir acceso de lectura y escritura con autenticación y cifrado para la vista definida
 #access rwcommunity "" any authPriv exact all none none
-...
 -------------------------------------------------------------------------------------------
 
 # reinicio servicio
@@ -275,15 +278,11 @@ sed -i 's/ENABLED="false"/ENABLED="true"/g' /etc/default/sysstat
 systemctl enable sysstat
 systemctl start sysstat
 
-# editor por defecto
-grep -qxF 'export VISUAL=vim' "$BASHRC" || echo 'export VISUAL=vim' >> "$BASHRC"
-grep -qxF 'export EDITOR=vim' "$BASHRC" || echo 'export EDITOR=vim' >> "$BASHRC"
-
 # Deshabilitar IPv6
 echo -e "# Deshabilitamos IPv6\nnet.ipv6.conf.all.disable_ipv6 = 1\nnet.ipv6.conf.default.disable_ipv6 = 1\nnet.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
 sysctl -p
 
-# crear archivo swap de XGB
+# crear archivo swap de X-GB (si es necesario)
 sudo fallocate -l 8G /swapfile
 sudo chmod 600 /swapfile
 mkswap /swapfile
@@ -299,7 +298,6 @@ systemctl enable netfilter-persistent
 # iptables v4
 vim /etc/iptables/rules.v4
 -------------------------------------------------------------------------------------------
-...
 *filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
@@ -321,13 +319,11 @@ vim /etc/iptables/rules.v4
 -A INPUT -j REJECT --reject-with icmp-host-prohibited
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
 COMMIT
-...
 -------------------------------------------------------------------------------------------
 
 # iptables v6
 vim /etc/iptables/rules.v6
 -------------------------------------------------------------------------------------------
-...
 *filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
@@ -341,7 +337,6 @@ vim /etc/iptables/rules.v6
 -A INPUT -j REJECT --reject-with icmp6-adm-prohibited
 -A FORWARD -j REJECT --reject-with icmp6-adm-prohibited
 COMMIT
-...
 -------------------------------------------------------------------------------------------
 
 # inicio servicio
@@ -350,7 +345,7 @@ systemctl start ip6tables
 ip6tables -L -n
 systemctl restart iptables
 
-# configuración SSH
+# configuración SSH (si es necesario)
 apt install -y openssh-server
 # Evitar suspensión en el contenedor
 systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
