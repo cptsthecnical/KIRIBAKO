@@ -2,6 +2,7 @@ apt install postfix
   > Internet site
   > vm-monitor
 
+cp /etc/postfix/main.cf /etc/postfix/main.ori
 vim /etc/postfix/main.cf
 --------------------------------------------------------------------------
 # Nombre del host y dominios locales
@@ -21,15 +22,23 @@ smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 smtp_sasl_security_options = noanonymous
+smtp_sasl_tls_security_options = noanonymous
 smtp_sasl_mechanism_filter = plain, login
 
 # Forzar IPv4 (opcional, evita errores de conexión IPv6)
 smtp_address_preference = ipv4
+inet_protocols = ipv4
 --------------------------------------------------------------------------
 
 vim /etc/postfix/sasl_passwd
 --------------------------------------------------------------------------
 [smtp.gmail.com]:587 de@gmail.com:<contraseña-de-aplicación>
+--------------------------------------------------------------------------
+
+# host
+vim /etc/mailname
+--------------------------------------------------------------------------
+vm-monitor
 --------------------------------------------------------------------------
 
 # Compilar y proteger credenciales
@@ -152,5 +161,7 @@ WantedBy=multi-user.target
 systemctl daemon-reload
 systemctl enable monitor.service
 systemctl start monitor.service
-systemctl status monitor.service
+
+systemctl status monitor
+
   
