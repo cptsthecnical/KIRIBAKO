@@ -108,6 +108,11 @@ https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins
 | Cpasbien                  | 4.5.x      | 3.11.x | Español, estrenos y series recientes                                                           |
 | YTS                       | 4.6.2      | 3.12   | Películas modernas en buena calidad y sin archivos gigantes, pero no es el sitio para español  |
 | Torrenflix                | 5.0.x      | 3.9.x  | Especializado en películas y series modernas, pero no es el sitio para español                 |
+| ThePirateBay              | 4.3.x      | 3.8.5  | Muy conocido, estrenos recientes, inglés                                                       |
+| The RarBg                 | 4.6.x      | 3.9.x  | Películas y series modernas, buena calidad, inglés                                             |
+| SolidTorrents.to          | 4.6.x      | 3.9.x  | Películas modernas en inglés, buena reputación                                                 |
+| Torrent Downloads Pro     | 4.6.x      | 3.9.x  | Inglés, contenido reciente y confiable                                                         |
+| MaxiTorrent               | 4.3.x      | 3.5.0  | Inglés, películas y series antiguas y recientes                                                |
 +---------------------------+------------+--------+------------------------------------------------------------------------------------------------+
 
 # configuro buscador
