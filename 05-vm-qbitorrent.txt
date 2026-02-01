@@ -130,7 +130,9 @@ python3 --version
   > http://plugins.qbittorrent.org
   # busco cpasbian.py y le doy a descargar > copio el código y lo pego en la siguiente ruta del servidor
   > /home/qbittorrent/.local/share/qBittorrent/nova3/engines/
-
+  # doy permisos
+  chmod 755 cpasbien.py
+  chown qbittorrent:qbittorrent cpasbien.py
   > search > search plugin > install new plugin > /home/qbittorrent/.local/share/qBittorrent/nova3/engines/cpasbien.py
 
 # en el caso que falten librerias de phyton
