@@ -1,3 +1,5 @@
+# máquina para Netflix casero con JellyFilm y qbitorrent (con search plugins).
+
 # ️‍🔥 Instalación qbitorrent
 # actualizo
 sudo apt update && sudo apt upgrade -y
